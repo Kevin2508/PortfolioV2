@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Just+Another+Hand&family=Inter:wght@300;400;500;600;700&family=Architects+Daughter&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===================== CSS CUSTOM PROPERTIES ===================== */
+:root {
+  --paper: #FAF8F2;
+  --paper-dark: #F0EDE3;
+  --pencil: #2B2B2B;
+  --graphite: #5C5C5C;
+  --charcoal: #1E1E1E;
+  --sketch-blue: #6B8CAE;
+  --sketch-red: #C97B7B;
+  --sketch-tan: #C4A882;
+  --font-sketch: 'Caveat', cursive;
+  --font-hand: 'Just Another Hand', cursive;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* ===================== GLOBAL RESET & BASE ===================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* handled by lenis */
+  font-size: 16px;
+  cursor: none;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--pencil);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--graphite);
+  border-radius: 3px;
+}
+
+/* ===================== PAPER TEXTURE OVERLAY ===================== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+}
+
+/* ===================== TYPOGRAPHY ===================== */
+.font-sketch { font-family: var(--font-sketch); }
+.font-hand { font-family: var(--font-hand); }
+.font-body { font-family: var(--font-body); }
+
+h1, h2, h3 {
+  font-family: var(--font-sketch);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--charcoal);
+}
+
+/* ===================== CUSTOM CURSOR ===================== */
+.cursor-pencil {
+  position: fixed;
+  top: 0; left: 0;
+  width: 28px; height: 28px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s linear;
+  will-change: transform;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
+  background: var(--pencil);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* ===================== SKETCH BORDERS & EFFECTS ===================== */
+.sketch-border {
+  position: relative;
+}
+.sketch-border::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--pencil);
+  border-radius: 2px;
+  clip-path: polygon(
+    0% 3%, 1% 0%, 99% 1%, 100% 3%,
+    99% 97%, 98% 100%, 2% 99%, 0% 97%
+  );
+}
+
+.rough-border {
+  border: 2px solid var(--pencil);
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 2px 2px 0 rgba(43,43,43,0.15), 3px 3px 0 rgba(43,43,43,0.08);
+}
+
+.sketch-card {
+  background: white;
+  border: 1.5px solid var(--pencil);
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 3px 3px 0 rgba(43,43,43,0.12), 5px 5px 0 rgba(43,43,43,0.06);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.sketch-card:hover {
+  transform: translateY(-4px) rotate(-0.3deg);
+  box-shadow: 6px 8px 0 rgba(43,43,43,0.14), 8px 12px 0 rgba(43,43,43,0.06);
+}
+
+/* ===================== SKETCH UNDERLINE ===================== */
+.sketch-underline {
+  position: relative;
+  display: inline-block;
+}
+.sketch-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='8'%3E%3Cpath d='M0,4 Q10,1 20,4 Q30,7 40,4 Q50,1 60,4 Q70,7 80,4 Q90,1 100,4 Q110,7 120,4 Q130,1 140,4 Q150,7 160,4 Q170,1 180,4 Q190,7 200,4' stroke='%232B2B2B' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 200px 8px;
+}
+
+/* Highlight marker underline */
+.sketch-highlight {
+  background: linear-gradient(120deg, rgba(196,168,130,0.4) 0%, rgba(196,168,130,0.15) 100%);
+  padding: 0 4px;
+  position: relative;
+}
+
+/* ===================== SECTION DIVIDERS ===================== */
+.section-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin: 2rem 0;
+}
+
+/* ===================== FLOATING DOODLES ===================== */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.12;
+  animation: float 5s ease-in-out infinite;
+}
+.doodle:nth-child(2n) { animation-delay: -1.5s; animation-duration: 6s; }
+.doodle:nth-child(3n) { animation-delay: -3s; animation-duration: 7s; }
+.doodle:nth-child(4n) { animation-delay: -2s; animation-duration: 5.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1.5deg); }
+  66% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+/* ===================== MAGNETIC BUTTON ===================== */
+.magnetic-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ===================== SKETCH BUTTON ===================== */
+.sketch-btn {
+  background: transparent;
+  border: 2px solid var(--pencil);
+  color: var(--pencil);
+  font-family: var(--font-sketch);
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  position: relative;
+  cursor: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+  clip-path: polygon(2% 0%, 98% 1%, 100% 2%, 99% 98%, 97% 100%, 3% 99%, 0% 97%, 1% 3%);
+}
+.sketch-btn:hover {
+  background: var(--pencil);
+  color: var(--paper);
+}
+.sketch-btn.primary {
+  background: var(--pencil);
+  color: var(--paper);
+}
+.sketch-btn.primary:hover {
+  background: var(--charcoal);
+}
+
+/* ===================== HAND-DRAWN PROGRESS BAR ===================== */
+.sketch-progress {
+  height: 14px;
+  background: transparent;
+  border: 1.5px solid var(--pencil);
+  border-radius: 1px;
+  overflow: visible;
+  position: relative;
+}
+.sketch-progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--pencil) 0px,
+    var(--pencil) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  position: relative;
+  transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ===================== NOTEBOOK LINES ===================== */
+.notebook-lines {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    rgba(43,43,43,0.06) 27px,
+    rgba(43,43,43,0.06) 28px
+  );
+}
+
+/* ===================== STICKY NOTE ===================== */
+.sticky-note {
+  background: rgba(255,251,220,0.9);
+  border: 1.5px solid rgba(43,43,43,0.2);
+  padding: 1rem;
+  font-family: var(--font-sketch);
+  font-size: 1.05rem;
+  position: relative;
+  transform: rotate(-1.5deg);
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.sticky-note:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+.sticky-note::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: 50%;
+  transform: translateX(-50%);
+  width: 24px; height: 16px;
+  background: rgba(196,168,130,0.6);
+  border: 1px solid rgba(43,43,43,0.2);
+  border-radius: 2px;
+}
+
+/* ===================== TORN PAPER EFFECT ===================== */
+.torn-paper {
+  position: relative;
+  background: white;
+  padding: 1.5rem;
+}
+.torn-paper::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: 0; right: 0;
+  height: 16px;
+  background: white;
+  clip-path: polygon(0% 100%, 2% 20%, 4% 80%, 6% 10%, 8% 70%, 10% 30%, 12% 90%, 14% 20%, 16% 75%, 18% 15%, 20% 80%, 22% 30%, 24% 85%, 26% 25%, 28% 70%, 30% 10%, 32% 65%, 34% 30%, 36% 80%, 38% 20%, 40% 75%, 42% 15%, 44% 70%, 46% 25%, 48% 80%, 50% 20%, 52% 75%, 54% 15%, 56% 65%, 58% 30%, 60% 85%, 62% 20%, 64% 70%, 66% 10%, 68% 65%, 70% 25%, 72% 80%, 74% 20%, 76% 75%, 78% 15%, 80% 70%, 82% 30%, 84% 85%, 86% 25%, 88% 70%, 90% 10%, 92% 65%, 94% 30%, 96% 80%, 98% 20%, 100% 75%, 100% 100%);
+}
+
+/* ===================== SVG SKETCH ANIMATIONS ===================== */
+.draw-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 2s ease forwards;
+}
+
+@keyframes drawLine {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ===================== SECTION SPACING ===================== */
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+/* ===================== LOADING SCREEN ===================== */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--paper);
+  z-index: 99990;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================== NAV ===================== */
+.sketch-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  background: rgba(250,248,242,0.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 1.5px solid rgba(43,43,43,0.1);
+}
+
+/* ===================== TRAIL PARTICLE ===================== */
+.trail-particle {
+  position: fixed;
+  width: 4px; height: 4px;
+  background: var(--graphite);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99997;
+  transform: translate(-50%, -50%);
+  will-change: opacity, transform;
+  animation: particle-fade 0.6s ease forwards;
+}
+
+@keyframes particle-fade {
+  from { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  html { cursor: auto; }
+  .cursor-pencil, .cursor-dot { display: none; }
+  section { padding: 3rem 0; }
+  h1 { font-size: 2.8rem !important; }
+}

@@ -1,0 +1,7 @@
+<!-- Favicon pencil SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect x="12" y="2" width="8" height="22" rx="2" fill="#FAF8F2" stroke="#2B2B2B" stroke-width="1.5"/>
+  <polygon points="12,24 20,24 16,30" fill="#C4A882" stroke="#2B2B2B" stroke-width="1.5"/>
+  <rect x="12" y="2" width="8" height="5" rx="2" fill="#C97B7B" stroke="#2B2B2B" stroke-width="1"/>
+  <line x1="12" y1="7" x2="20" y2="7" stroke="#2B2B2B" stroke-width="1"/>
+</svg>
