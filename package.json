@@ -1,7 +1,7 @@
 {
   "name": "dave-kevin-portfolio",
   "version": "1.0.0",
-  "description": "Dave Kevin Sharadbhai - Creative Developer Portfolio",
+  "description": "Dave Kevin - Creative Developer Portfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",

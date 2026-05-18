@@ -171,7 +171,7 @@ PAGE STRUCTURE:
 Include:
 
 * Large sketched name:
-  “Dave Kevin Sharadbhai”
+  “Dave Kevin"
 * Dynamic animated role switcher:
 
   * Flutter Developer

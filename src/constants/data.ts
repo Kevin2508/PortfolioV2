@@ -29,6 +29,7 @@ export const PROJECTS: Project[] = [
     tags: ['Full Stack', 'AI', 'IoT'],
     category: 'Full Stack',
     tech: ['Flutter', 'MERN', 'Redis', 'Docker', 'Kubernetes'],
+    github: 'https://github.com/virajwarhade/Disaster_project',
     featured: true,
   },
   {
@@ -38,6 +39,7 @@ export const PROJECTS: Project[] = [
     tags: ['Full Stack', 'SaaS', 'Web'],
     category: 'Full Stack',
     tech: ['Next.js', 'PostgreSQL', 'Prisma ORM', 'REST APIs'],
+    github: 'https://github.com/krishdave-dev/Odoo-x-Amalthea-Team-56',
     featured: true,
   },
   {
@@ -47,16 +49,16 @@ export const PROJECTS: Project[] = [
     tags: ['Full Stack', 'Mobile', 'Booking'],
     category: 'Mobile',
     tech: ['Next.js', 'Flutter', 'PostgreSQL', 'Prisma ORM', 'REST APIs'],
-    github: 'https://github.com/Kevin2508/quickcourt',
+    github: 'https://github.com/hitarth0710/QuickCourt_Odoo',
   },
   {
-    id: 'streammart',
-    title: 'StreamMart',
-    description: 'MERN stack live shopping platform with real-time streaming, chat, product management, and role-based flows for admins, sellers, and customers.',
-    tags: ['Full Stack', 'Real-time', 'Web'],
+    id: 'siddhatalks',
+    title: 'SiddhaTalks',
+    description: 'Full-stack discussion and knowledge-sharing platform focused on community conversations, content publishing, and clean user flows.',
+    tags: ['Full Stack', 'Community', 'Web'],
     category: 'Full Stack',
-    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
-    github: 'https://github.com/Kevin2508/StreamMart',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    github: 'https://github.com/Kevin2508/thesiddhatalks',
   },
 ]
 

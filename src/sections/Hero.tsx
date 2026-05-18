@@ -47,7 +47,7 @@ export default function Hero() {
                   </svg>
                 </span>
               </h1>
-              <p className="font-sketch text-3xl md:text-4xl text-graphite mt-2">Sharadbhai</p>
+              <p className="font-sketch text-3xl md:text-4xl text-graphite mt-2"></p>
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex items-center gap-3 h-12 overflow-hidden">

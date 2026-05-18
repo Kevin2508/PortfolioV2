@@ -7,6 +7,8 @@ interface TrailPoint {
   y: number
 }
 
+const RESTING_PENCIL_ANGLE = 50
+
 export default function CustomCursor() {
   const pencilRef = useRef<HTMLDivElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
@@ -80,7 +82,7 @@ export default function CustomCursor() {
         ref={pencilRef}
         className="cursor-pencil"
         style={{
-          transform: `translate(-50%, -50%) rotate(${tilt + 90}deg) scale(${isClicking ? 0.85 : isHovering ? 1.2 : 1})`,
+          transform: `translate(-50%, -50%) rotate(${tilt + RESTING_PENCIL_ANGLE}deg) scale(${isClicking ? 0.85 : isHovering ? 1.2 : 1})`,
           transition: 'transform 0.15s ease',
         }}
       >

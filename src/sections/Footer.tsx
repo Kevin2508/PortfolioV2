@@ -41,7 +41,7 @@ export default function Footer() {
               <path d="M10,16 Q100,8 190,16" stroke="#2B2B2B" strokeWidth="1" strokeDasharray="5 3" fill="none"/>
             </svg>
             <p className="font-hand text-lg text-graphite">
-              &copy; {year} Dave Kevin Sharadbhai — All rights sketched.
+              &copy; {year} Dave Kevin — All rights sketched.
             </p>
           </div>
 
